@@ -5,7 +5,6 @@ package goIdlCosNotification
 import __goidl__ "github.com/bhbosman/goidl"
 import __json__ "encoding/json"
 import __reflect__ "reflect"
-import __yaccidl__ "github.com/bhbosman/yaccidl"
 
 // Struct declaration: "CosNotification::NamedPropertyRange", generatedBy by: "WriteStructDcl"
 // Exception Decl: false
@@ -88,8 +87,9 @@ func init() {
 	__goidl__.AddRegistration(
 		__goidl__.NewRegistrationInformation(
 			CosNotificationNamedPropertyRangeId_Const,
-			__yaccidl__.IdlStruct,
-			"CosNotification.idl.NamedPropertyRange.go",
+			__goidl__.StructType,
+			"CosNotification.idl",
+			"xdl_CosNotificationNamedPropertyRange.go",
 			func() __goidl__.IIdlObject {
 				return &CosNotificationNamedPropertyRange{}
 			},

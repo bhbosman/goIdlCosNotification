@@ -6,19 +6,21 @@ import __goidl__ "github.com/bhbosman/goidl"
 
 // Interface declaration: "CosNotification::QoSAdmin", generatedBy by: "WriteInterface"
 type CosNotificationQoSAdmin interface {
-	// Interface operations
 	// Original name: "get_qos"
-	GetQos() (result *CosNotificationQoSProperties, err error)
+	GetQos(params CosNotificationQoSAdminGetQosIn) (CosNotificationQoSAdminGetQosOut, error)
 	//Exceptions for : SetQos
 	//	CosNotificationUnsupportedQoS
 	// Original name: "set_qos"
-	SetQos(Qos *CosNotificationQoSProperties) (error error)
+	SetQos(params CosNotificationQoSAdminSetQosIn) (CosNotificationQoSAdminSetQosOut, error)
 	//Exceptions for : ValidateQos
 	//	CosNotificationUnsupportedQoS
 	// Original name: "validate_qos"
-	ValidateQos(RequiredQos *CosNotificationQoSProperties) (AvailableQos *CosNotificationNamedPropertyRangeSeq, error error)
+	ValidateQos(params CosNotificationQoSAdminValidateQosIn) (CosNotificationQoSAdminValidateQosOut, error)
 }
 
+const CosNotificationQoSAdminGetQosOperation = "get_qos"
+const CosNotificationQoSAdminSetQosOperation = "set_qos"
+const CosNotificationQoSAdminValidateQosOperation = "validate_qos"
 //noinspection GoSnakeCaseUsage
 type CosNotificationQoSAdmin_Helper struct {
 }

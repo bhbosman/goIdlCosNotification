@@ -5,12 +5,11 @@ package goIdlCosNotification
 import __goidl__ "github.com/bhbosman/goidl"
 import __json__ "encoding/json"
 import __reflect__ "reflect"
-import __yaccidl__ "github.com/bhbosman/yaccidl"
 
-// Struct declaration: "CosNotification::EventBatch", generatedBy by: "WriteSeqStructDcl"
+// Struct declaration: "CosNotification::EventBatch", generatedBy by: "WriteStructSequenceDcl"
 type CosNotificationEventBatch struct {
 	__goidl__.IdlObject
-	Array []CosNotificationStructuredEvent `json:"Array"`
+	Array []*CosNotificationStructuredEvent `json:"Array"`
 }
 
 //noinspection GoSnakeCaseUsage
@@ -28,10 +27,54 @@ func (self *CosNotificationEventBatch) GoString() string {
 	return self.String()
 }
 
+func (self *CosNotificationEventBatch) ReadValue(stream __goidl__.IReadAny) error {
+	err := self.IdlObject.ReadValue(stream)
+	if err != nil {
+		return err
+	}
+	var n uint32
+	n, err = __goidl__.IdlUInt32Helper.Read(stream)
+	if err != nil {
+		return err
+	}
+	if n > 0 {
+		self.Array = make([]*CosNotificationStructuredEvent, n)
+		var i uint32
+		for i = 0; i < n; i++ {
+			self.Array[i] = &CosNotificationStructuredEvent{}
+			err = self.Array[i].ReadValue(stream)
+				if err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
 func (self *CosNotificationEventBatch) Read(stream __goidl__.IReadAny) error {
 	err := self.ReadValue(stream)
 	if err != nil {
 		return err
+	}
+	return nil
+}
+
+func (self *CosNotificationEventBatch) Write(stream __goidl__.IWriteAny) error {
+	err := self.IdlObject.Write(stream)
+	if err != nil {
+		return err
+	}
+	err = __goidl__.IdlUInt32Helper.Write(stream, uint32(len(self.Array)))
+	if err != nil {
+	return err
+	}
+	if len(self.Array) > 0 {
+		for _, item := range self.Array {
+			err = item.Write(stream)
+			if err != nil {
+				return err
+			}
+		}
 	}
 	return nil
 }
@@ -48,8 +91,9 @@ func init() {
 	__goidl__.AddRegistration(
 		__goidl__.NewRegistrationInformation(
 			CosNotificationEventBatchId_Const,
-			__yaccidl__.IdlStruct,
-			"CosNotification.idl.EventBatch.go",
+			__goidl__.SequenceType,
+			"CosNotification.idl",
+			"xdl_CosNotificationEventBatch.go",
 			func() __goidl__.IIdlObject {
 				return &CosNotificationEventBatch{}
 			},

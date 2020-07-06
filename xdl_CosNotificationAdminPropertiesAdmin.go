@@ -6,15 +6,16 @@ import __goidl__ "github.com/bhbosman/goidl"
 
 // Interface declaration: "CosNotification::AdminPropertiesAdmin", generatedBy by: "WriteInterface"
 type CosNotificationAdminPropertiesAdmin interface {
-	// Interface operations
 	// Original name: "get_admin"
-	GetAdmin() (result *CosNotificationAdminProperties, err error)
+	GetAdmin(params CosNotificationAdminPropertiesAdminGetAdminIn) (CosNotificationAdminPropertiesAdminGetAdminOut, error)
 	//Exceptions for : SetAdmin
 	//	CosNotificationUnsupportedAdmin
 	// Original name: "set_admin"
-	SetAdmin(Admin *CosNotificationAdminProperties) (error error)
+	SetAdmin(params CosNotificationAdminPropertiesAdminSetAdminIn) (CosNotificationAdminPropertiesAdminSetAdminOut, error)
 }
 
+const CosNotificationAdminPropertiesAdminGetAdminOperation = "get_admin"
+const CosNotificationAdminPropertiesAdminSetAdminOperation = "set_admin"
 //noinspection GoSnakeCaseUsage
 type CosNotificationAdminPropertiesAdmin_Helper struct {
 }

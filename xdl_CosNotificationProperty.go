@@ -5,7 +5,6 @@ package goIdlCosNotification
 import __goidl__ "github.com/bhbosman/goidl"
 import __json__ "encoding/json"
 import __reflect__ "reflect"
-import __yaccidl__ "github.com/bhbosman/yaccidl"
 
 // Struct declaration: "CosNotification::Property", generatedBy by: "WriteStructDcl"
 // Exception Decl: false
@@ -88,8 +87,9 @@ func init() {
 	__goidl__.AddRegistration(
 		__goidl__.NewRegistrationInformation(
 			CosNotificationPropertyId_Const,
-			__yaccidl__.IdlStruct,
-			"CosNotification.idl.Property.go",
+			__goidl__.StructType,
+			"CosNotification.idl",
+			"xdl_CosNotificationProperty.go",
 			func() __goidl__.IIdlObject {
 				return &CosNotificationProperty{}
 			},

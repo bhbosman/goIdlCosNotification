@@ -6,7 +6,6 @@ import __fmt__ "fmt"
 import __goidl__ "github.com/bhbosman/goidl"
 import __json__ "encoding/json"
 import __reflect__ "reflect"
-import __yaccidl__ "github.com/bhbosman/yaccidl"
 
 // Exception declaration: "CosNotification::UnsupportedAdmin", generatedBy by: "WriteStructDcl"
 // Exception Decl: true
@@ -81,8 +80,9 @@ func init() {
 	__goidl__.AddRegistration(
 		__goidl__.NewRegistrationInformation(
 			CosNotificationUnsupportedAdminId_Const,
-			__yaccidl__.IdlStruct,
-			"CosNotification.idl.UnsupportedAdmin.go",
+			__goidl__.StructType,
+			"CosNotification.idl",
+			"xdl_CosNotificationUnsupportedAdmin.go",
 			func() __goidl__.IIdlObject {
 				return &CosNotificationUnsupportedAdmin{}
 			},

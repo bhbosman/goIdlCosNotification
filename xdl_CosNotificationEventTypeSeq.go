@@ -5,12 +5,11 @@ package goIdlCosNotification
 import __goidl__ "github.com/bhbosman/goidl"
 import __json__ "encoding/json"
 import __reflect__ "reflect"
-import __yaccidl__ "github.com/bhbosman/yaccidl"
 
-// Struct declaration: "CosNotification::EventTypeSeq", generatedBy by: "WriteSeqStructDcl"
+// Struct declaration: "CosNotification::EventTypeSeq", generatedBy by: "WriteStructSequenceDcl"
 type CosNotificationEventTypeSeq struct {
 	__goidl__.IdlObject
-	Array []CosNotificationEventType `json:"Array"`
+	Array []*CosNotificationEventType `json:"Array"`
 }
 
 //noinspection GoSnakeCaseUsage
@@ -28,10 +27,54 @@ func (self *CosNotificationEventTypeSeq) GoString() string {
 	return self.String()
 }
 
+func (self *CosNotificationEventTypeSeq) ReadValue(stream __goidl__.IReadAny) error {
+	err := self.IdlObject.ReadValue(stream)
+	if err != nil {
+		return err
+	}
+	var n uint32
+	n, err = __goidl__.IdlUInt32Helper.Read(stream)
+	if err != nil {
+		return err
+	}
+	if n > 0 {
+		self.Array = make([]*CosNotificationEventType, n)
+		var i uint32
+		for i = 0; i < n; i++ {
+			self.Array[i] = &CosNotificationEventType{}
+			err = self.Array[i].ReadValue(stream)
+				if err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
 func (self *CosNotificationEventTypeSeq) Read(stream __goidl__.IReadAny) error {
 	err := self.ReadValue(stream)
 	if err != nil {
 		return err
+	}
+	return nil
+}
+
+func (self *CosNotificationEventTypeSeq) Write(stream __goidl__.IWriteAny) error {
+	err := self.IdlObject.Write(stream)
+	if err != nil {
+		return err
+	}
+	err = __goidl__.IdlUInt32Helper.Write(stream, uint32(len(self.Array)))
+	if err != nil {
+	return err
+	}
+	if len(self.Array) > 0 {
+		for _, item := range self.Array {
+			err = item.Write(stream)
+			if err != nil {
+				return err
+			}
+		}
 	}
 	return nil
 }
@@ -48,8 +91,9 @@ func init() {
 	__goidl__.AddRegistration(
 		__goidl__.NewRegistrationInformation(
 			CosNotificationEventTypeSeqId_Const,
-			__yaccidl__.IdlStruct,
-			"CosNotification.idl.EventTypeSeq.go",
+			__goidl__.SequenceType,
+			"CosNotification.idl",
+			"xdl_CosNotificationEventTypeSeq.go",
 			func() __goidl__.IIdlObject {
 				return &CosNotificationEventTypeSeq{}
 			},
